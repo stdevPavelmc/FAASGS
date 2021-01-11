@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY : help test
+.PHONY : help run remove clean
 
 PWD = $(shell pwd)
 
@@ -11,7 +11,7 @@ conf: ## Create a configuration directory in /etc/
 cconf: conf ## Copy the config files
 	sudo cp sat_data/* /etc/sat_data/
 	sudo chown -R root:root /etc/sat_data
-	echo "done" > conf_copy
+	echo "done" > cconf
 
 www: ## Create the www folders
 	sudo mkdir -p /var/www/html/ || exit 0
@@ -36,16 +36,21 @@ install: deps cconf cwww ## Install the software
 	chmod +x sat.sh
 	echo "done" > install
 
-test: install ## Test if the software can make a full run withous problem
-
 permanent: install ## Setup the permanent job at 01 minutes every hour
 	sudo cp sat.cron /etc/cron.d/
+	echo "done" > permanent
 
 remove: ## Temove the software from the PC
 	sudo rm -rdf /var/www/html/*
 	sudo rm -rdf /etc/sat_data
 	sudo rm /etc/cron.d/sat.cron
 	sudo for i in `atq | awk '{print $1}'`; do sudo atrm $i; done
+
+run: install ## Run the software
+	/usr/local/bin/sats.sh
+
+clean: ## Clean all the targets to start over
+	sudo rm {conf,cconf,www,cwww,deps,install,permanent}  || exit 0
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
