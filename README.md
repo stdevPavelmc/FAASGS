@@ -93,3 +93,10 @@ Next step is to select the satellites you want to monitor, the file is named `sa
 
 Please note that the satellites has a name and a nickname, the name reffers to the one that appears in the TLE file and the nickname is a friendly name for us (and must not contain spaces, parenthesis, slashes, etc)
 
+## Contributing
+
+You can improve the software, donate equipment, top up my cell phone, or kust share your impressions on social media; all of that in the [Contributing](Contributing.md) file.
+
+## This is FREE SOFTWARE!
+
+Free as in freedom, see the LICENCE file for details.
