@@ -1,0 +1,44 @@
+{
+    "satellites": [
+        {
+            "name": "ISS (ZARYA)",
+            "nick": "ISS",
+            "freq": "145.800"
+        },
+        {
+            "name": "RADFXSAT (FOX-1B)",
+            "nick": "AO91-FOX-1B",
+            "freq": "145.960"
+        },
+        {
+            "name": "FOX-1CLIFF (AO-95)",
+            "nick": "AO95-FOX-1CLIFF",
+            "freq": "145.920"
+        },
+        {
+            "name": "FOX-1D (AO-92)",
+            "nick": "AO92-FOX-1D",
+            "freq": "145.880"
+        },
+        {
+            "name": "DIWATA-2B",
+            "nick": "PO101-DIWATA-2B",
+            "freq": "145.900"
+        },
+        {
+            "name": "NOAA 19",
+            "nick": "NOAA19",
+            "freq": "137.100"
+        },
+        {
+            "name": "NOAA 18",
+            "nick": "NOAA18",
+            "freq": "137.9125"
+        },
+        {
+            "name": "NOAA 15",
+            "nick": "NOAA15",
+            "freq": "137.620"
+        }       
+    ]
+}

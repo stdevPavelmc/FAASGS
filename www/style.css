@@ -1,0 +1,136 @@
+.body {
+    background-color: #000;
+    color: beige;
+    background:url(./world_map.png) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+
+.title h1 {
+    color: #a8d500;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 5px 0;
+}
+
+.user h5 {
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+    padding: 5px 7px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.comments {
+    font-size: 12px;
+    margin-top: -5px;
+    color: #757575;
+    padding-bottom: 10px;
+}
+
+.left_container {
+    width: 45%;
+    height: 95%;
+    float:left;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 2%;
+}
+
+.right_container {
+    width: 45%;
+    height: 95%;
+    float: right;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 3%;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-sizing: content-box;
+}
+
+.qth_header {
+    width: 100%;
+    height: 168px;
+}
+
+.left_sc {
+    height: calc(100% - 168px);
+}
+
+.scroll_container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.scrollable {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.scrollable table {
+    width: 100%;
+    padding-left: 5px;
+}
+
+.scrollable table th {
+    position: relative;
+    color: #8e8f8f;
+    font-weight: 300;
+    font-size: 80%;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.scrollable table tbody:hover{
+    color:#a8d500;
+    border-left:1px solid #a8d500;
+}
+
+.scrollable table td {
+    font-size: 90%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.scrollable table tbody.clickable:hover {
+    cursor: pointer;
+}
+
+.scrollable table tbody.clickable:hover th:first-child:before{
+    content:"";
+    position:absolute;
+    background:#a8d500;
+    height:40px;
+    width:1px;
+    top:13px;
+    left:-5px
+}
+
+.titlehead {
+    color: #a8d500;
+    background: linear-gradient(#a8d500, #a8d500) 0 0 no-repeat,linear-gradient(#a8d500, #a8d500) 0 0 no-repeat,linear-gradient(#a8d500, #a8d500) 100% 0 no-repeat,linear-gradient(#a8d500, #a8d500) 100% 0 no-repeat,linear-gradient(#a8d500, #a8d500) 0 100% no-repeat,linear-gradient(#a8d500, #a8d500) 0 100% no-repeat,linear-gradient(#a8d500, #a8d500) 100% 100% no-repeat,linear-gradient(#a8d500, #a8d500) 100% 100% no-repeat,rgba(99,99,99,0);
+    background-size: 5px 2px,5px 2px;
+    background-color: #2e2d2d;
+    cursor: pointer;
+    transition: .3s ease;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
