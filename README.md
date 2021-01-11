@@ -4,6 +4,14 @@ A setup to build a satellite ground stations that can tune, record and generate 
 
 I used [Armbian](https://www.armbian.com/) as OS, but you can manage it to make it work with [RaspiOS](https://www.raspberrypi.org/software/) with a little work.
 
+A sample of the main view:
+
+![Main view of the page](images/main.png)
+
+A sample view of a pass (PO-101 DIWATA-2B FM sat):
+
+![Main view of the page](images/sat.png)
+
 ## Inspiration
 
 This proyect is inspired and heavily based on the work of [Luick Klippel](https://github.com/luickk) and his work on his [NOAA Satellite Station](https://github.com/luickk/noaa_satellite_ground_station) repository.
