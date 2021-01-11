@@ -101,6 +101,17 @@ Next step is to select the satellites you want to monitor, the file is named `sa
 
 Please note that the satellites has a name and a nickname, the name reffers to the one that appears in the TLE file and the nickname is a friendly name for us (and must not contain spaces, parenthesis, slashes, etc)
 
+## A word about the RF part: Antennas!
+
+I have not spoken about antennas and RF in this document because that relies on your expertice, I will mentioned my experience with some and I trust your internet skills to find them
+
+- A 2m J-pole: normal for voice FM sats, bad for APT images (the image of PO-101 above was taken with just a  J-pole + 12m of RG-8X)
+- A horizontal 120 degrees V for APT satellites (137 Mhz): better for APT, regular-to-bad for voice FM satellites
+- The mentioned V but plus a wide LNA (+8 dB on 137 and 145 Mhz): very good for APT, normal-to-good for voice FM sats *(actual antenna)*
+- A 1/4 wave 2m ground plane (120 degrees elements) regular for 2m voice, regular for APT and regular-good for 70cm sats (yes, it works on 70cm too) *(down for maintenance)*
+
+As usual, the higher and un-obstructed view for the antenna the better, also for coax: top quality ones and as short as possible.
+
 ## Contributing
 
 You can improve the software, donate equipment, top up my cell phone, or kust share your impressions on social media; all of that in the [Contributing](Contributing.md) file.
