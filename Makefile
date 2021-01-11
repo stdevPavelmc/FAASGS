@@ -13,10 +13,10 @@ cconf: conf ## Copy the config files
 	sudo chown -R root:root /etc/sat_data
 	echo "done" > cconf
 
-www: ## Create the www folders
+wwwt: ## Create the www folders
 	sudo mkdir -p /var/www/html/ || exit 0
 	sudo rm /var/www/html/index.html
-	echo "done" > www
+	echo "done" > wwwt
 
 cwww: www ## Copy the data to the web folder
 	sudo cp -fr www/* /var/www/html/
@@ -52,7 +52,7 @@ run: install ## Run the software
 clean: ## Clean all the targets to start over
 	sudo rm conf || exit 0
 	sudo rm cconf || exit 0
-	sudo rm www || exit 0
+	sudo rm wwwt || exit 0
 	sudo rm cwww || exit 0
 	sudo rm deps || exit 0
 	sudo rm install || exit 0
