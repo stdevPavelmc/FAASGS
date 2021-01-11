@@ -32,7 +32,7 @@ deps: ## Install some tools needed by the software
 
 install: deps cconf cwww ## Install the software
 	sudo rm /usr/local/bin/sats.sh || exit 0
-	sudo ln -s sat.sh /usr/local/bin/sats.sh
+	sudo ln -s $(PWD)/sat.sh /usr/local/bin/sats.sh
 	chmod +x sat.sh
 	echo "done" > install
 
