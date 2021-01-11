@@ -50,7 +50,13 @@ run: install ## Run the software
 	/usr/local/bin/sats.sh
 
 clean: ## Clean all the targets to start over
-	sudo rm {conf,cconf,www,cwww,deps,install,permanent}  || exit 0
+	sudo rm conf || exit 0
+	sudo rm cconf || exit 0
+	sudo rm www || exit 0
+	sudo rm cwww || exit 0
+	sudo rm deps || exit 0
+	sudo rm install || exit 0
+	sudo rm permanent || exit 0
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
