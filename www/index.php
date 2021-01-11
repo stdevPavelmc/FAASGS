@@ -33,18 +33,25 @@
                     <div class="user">
                         <h5>Automatic Satellite Ground Station</h5>
                     </div>
-                    <div id='title' class="title">
-                        <h1>Camagüey - Cuba - FL11aj</h1>
+                    <div class="qth_sat">
+                        <div class="qth">
+                            <div id='title' class="title">
+                                <h1>Camagüey - Cuba - FL11aj</h1>
+                            </div>
+                            <p class="comments">
+                                Autonomous Satellite Ground station using a SBC and a RTL-SDR,</br>
+                                Tracking numerous satellites for the ham community, working 24/7</br>
+                                Capturing images from NOAAs and audios for FM satellites</br>
+                                Visit us on <a href="https://github.com/stdevPavelmc/FAASGS">our Github page</a>
+                            </p>
+                        </div>
+                        <div class="satellite">
+                            <img src="../img/satellite.png" />
+                        </div>
                     </div>
-                    <p class="comments">
-                    Tracking numerous satellites</br>
-                    Autonomous Satellite Ground station,</br>
-                    capturing images from NOAAs and audios</br>
-                    for FM satellites
-                    </p>
-                    <div class="titlehead">next satellite passes</div>
                 </div>
                 <div class="left_sc">
+                    <div class="titlehead">next satellite passes</div>
                     <div class="scroll_container">
                         <div class="scrollable">
                             <table>

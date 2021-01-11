@@ -26,6 +26,7 @@
     text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
+    float: none;
 }
 
 .comments {
@@ -59,7 +60,28 @@
 
 .qth_header {
     width: 100%;
-    height: 168px;
+    height: 138px;
+}
+
+.qth_sat {
+    width: 100%;
+}
+
+.qth {
+    width: 75%;
+    float: left;
+}
+
+.satellite {
+    width: 25%;
+    float: right;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.satellite img {
+    width: 75%;
+    height: 75%;
 }
 
 .left_sc {
