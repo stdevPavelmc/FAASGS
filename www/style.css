@@ -1,7 +1,7 @@
 .body {
     background-color: #000;
     color: beige;
-    background:url(./world_map.png) no-repeat center center fixed;
+    background:url(./img/world_map.png) no-repeat center center fixed;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
@@ -133,4 +133,59 @@
     padding: 5px 10px;
     text-transform: uppercase;
     text-align: center;
+}
+
+.sat_info {
+    width: 25%;
+    height: 100%;
+    float: left;
+    padding-left: 1%;
+    padding-right: 2%;
+}
+
+.sat_data_head {
+    position: relative;
+    color: #8e8f8f;
+    font-weight: 300;
+    font-size: 80%;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.sdata {
+    font-size: 120%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.actions {
+    width: 100%;
+    text-align: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(117, 117, 117);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 135%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
