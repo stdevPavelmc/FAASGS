@@ -5,7 +5,7 @@
 PWD = $(shell pwd)
 
 conf: ## Create a configuration directory in /etc/
-	sudo mkdir /etc/sat_data
+	sudo mkdir /etc/sat_data || exit 0
 	echo "done" > conf
 
 cconf: conf ## Copy the config files
@@ -14,13 +14,13 @@ cconf: conf ## Copy the config files
 	echo "done" > conf_copy
 
 www: ## Create the www folders
-	sudo mkdir -p /var/www/html/
+	sudo mkdir -p /var/www/html/ || exit 0
 	sudo rm /var/www/html/index.html
 	echo "done" > www
 
 cwww: www ## Copy the data to the web folder
-	sudo cpy -fr www/* /var/www/html/
-	sudo mkdir /var/www/html/sat/
+	sudo cp -fr www/* /var/www/html/
+	sudo mkdir /var/www/html/sat/ || exit 0
 	sudo chown -R 33:33 /var/www/
 	sudo find /var/www/ -type d -exec chmod 0770 {} \;
 	sudo find /var/www/ -type f -exec chmod 0660 {} \;
@@ -31,7 +31,8 @@ deps: ## Install some tools needed by the software
 	echo "done" > deps
 
 install: deps cconf cwww ## Install the software
-	ln -s sat.sh /usr/local/bin/sats.sh
+	sudo rm /usr/local/bin/sats.sh || exit 0
+	sudo ln -s sat.sh /usr/local/bin/sats.sh
 	chmod +x sat.sh
 	echo "done" > install
 
