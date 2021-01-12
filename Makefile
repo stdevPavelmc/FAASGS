@@ -37,14 +37,17 @@ install: deps cconf cwww ## Install the software
 	echo "done" > install
 
 permanent: install ## Setup the permanent job at 01 minutes every hour
-	sudo cp sat.cron /etc/cron.d/
+	sudo cp sat.cron /etc/cron.d/sats
 	echo "done" > permanent
 
-remove: ## Temove the software from the PC
-	sudo rm -rdf /var/www/html/*
-	sudo rm -rdf /etc/sat_data
-	sudo rm /etc/cron.d/sat.cron
+remove: ## Remove the software from the PC
+	sudo rm -rdf /etc/sat_data || exit 0
+	sudo rm /etc/cron.d/sats || exit 0
+	sudo rm /etc/cron.d/sat.cron || exit 0
 	sudo for i in `atq | awk '{print $1}'`; do sudo atrm $i; done
+	echo "== NOTICE ============================================================="
+	echo "Data in '/var/www/html' was left intact, remove it yourself if needed"
+	echo "======================================================================="
 
 run: install ## Run the software
 	/usr/local/bin/sats.sh
