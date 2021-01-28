@@ -69,7 +69,7 @@ foreach ($detailsfile as $vars) {
         <link rel="stylesheet" href="../../style.css" debug="false">
         <script type="text/javascript">
             function confirm_erase() {
-                if(window.confirm("Are you sure you want to erase the recorded folder?")){
+                if(window.confirm("Are you sure you want to erase the entire folder?")){
                     return true;
                 } else {
                     return false;
@@ -78,7 +78,7 @@ foreach ($detailsfile as $vars) {
 	    </script>
     </head>
     <body class="body">
-    <div id='page' style="display: flex;">
+    <div class="wrap">
         <div class='sat_info'>
             <div class="titlehead">recorded satellite data</div>
 
@@ -109,44 +109,79 @@ foreach ($detailsfile as $vars) {
 
             <div class="sat_data_head">&nbsp;</div>
             <div class="titlehead">Actions</div>
-            <table class="actions">
-                <tr>
-                    <td>
-                        <a class="tooltip" href=<?php
-                        if (file_exists(getcwd()."/".$satname.".mp3")) {
-                            echo "'./".$satname.".mp3'";
-                        } else {
-                            echo "'./".$satname.".wav'";
-                        }?> alt="Click to play, Right click then save to download">
-                            <img src="../../img/audio.png" />
-                            <span class="tooltiptext">Click to play, Right click, then save link to download.</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="tooltip" href=<?php echo "'./".$satname.".png'"; ?>>
-                            <img src="../../img/image.png" />
-                            <span class="tooltiptext">Click to view the original image, Right click, then save link to download.</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="tooltip" href="./?delete=true" onclick="return confirm_erase();">
-                            <img src="../../img/delete.png" />
-                            <span class="tooltiptext">Click to erase the folder if any data was captured.</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="tooltip" href="#" onclick="window.close();">
-                            <img src="../../img/back.png" />
-                            <span class="tooltiptext">Close this windows and go back to listing.</span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
+            <div class="thumbs">
+                <a class="tooltip" href=<?php
+                if (file_exists(getcwd()."/".$satname.".mp3")) {
+                    echo "'./".$satname.".mp3'";
+                } else {
+                    echo "'./".$satname.".wav'";
+                }?> alt="Click to play, Right click then save to download">
+                    <img src="../../img/audio.png" />
+                    <span class="tooltiptext">Click to play, Right click, then save link to download.</span>
+                </a>
+                <a class="tooltip" href=<?php echo "'./".$satname.".png'"; ?>>
+                    <img src="../../img/image.png" />
+                    <span class="tooltiptext">Click to view the original image, Right click, then save link to download.</span>
+                </a>
+                <a class="tooltip" href="#" onclick="window.close();">
+                    <img src="../../img/back.png" />
+                    <span class="tooltiptext">Close this windows and go back to listing.</span>
+                </a>
+                <?php
+
+                // don't show the erase if a file called noerase is present in the folder
+                if (!file_exists(getcwd()."/noerase")) {
+                ?>
+                <a class="tooltip" href="./?delete=true" onclick="return confirm_erase();">
+                    <img src="../../img/delete.png" />
+                    <span class="tooltiptext">Click to erase the folder if any data was captured.</span>
+                </a>
+                <?php
+                }
+                ?>
+                <span class="stretch"></span>
+            </div>
         </div>
-        <div id='image' style="flex: 1;">
-                <a href=<?php echo "'./".$satname.".png'"; ?>>
-                <img src=<?php echo "'".$satname.".png'"; ?> style="max-width: 100%; max-height: 100%; display: block;"/>
+        <div class="image">
+            <?php
+            // in early version all files are png, in modern ones they are jpeg
+            $ext = "jpg";
+
+            if (!file_exists(getcwd()."/".$satname.".".$ext)) {
+                $ext = "png";
+            }
+
+            // NOAA or voice?
+            if (strpos($satname, 'NOAA') !== false) {
+            ?>
+            <div class="thumbs">
+                <a href=<?php echo "'".$satname."C.".$ext."'"; ?>  target="_blank">
+                    <img src=<?php echo "'t".$satname."C.jpg'"; ?>/>
+                </a>
+                <a href=<?php echo "'".$satname.".".$ext."'"; ?> target="_blank">
+                    <img src=<?php echo "'t".$satname.".jpg'"; ?> />
+                </a>
+                <a href=<?php echo "'".$satname."T.".$ext."'"; ?>  target="_blank">
+                    <img src=<?php echo "'t".$satname."T.jpg'"; ?> />
+                </a>
+                <a href=<?php echo "'".$satname."3D.".$ext."'"; ?> target="_blank">
+                    <img src=<?php echo "'t".$satname."3D.jpg'"; ?> />
+                </a>
+                <span class="stretch"></span>
+            </div>
+            <?php
+
+            } else {
+                // is a voice sat
+            ?>
+            <a href=<?php echo "'".$satname.".".$ext."'"; ?> target="_blank" >
+                <img src=<?php echo "'".$satname.".".$ext."'"; ?> style="max-width: 100%; max-height: 100%; display: block;"/>
             </a>
+            <?php
+
+            }
+
+            ?>
         </div>
     </div>
     </body>
