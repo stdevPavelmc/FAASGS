@@ -219,22 +219,22 @@ rec_sat_data () {
 			# creating standard image & tumbnail
 			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e HVC -K \
 				${WSATP}.wav ${WSATP}.jpg
-			convert ${WSATP}.jpg -resize 40% t${WSATP}.jpg
+			convert ${WSATP}.jpg -resize 40% ${WBASE}/t${SAT}.jpg
 
 			# creating colored image & tumbnail
 			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e MSA \
 				${WSATP}.wav ${WSATP}C.jpg
-			convert ${WSATP}C.jpg -resize 40% t${WSATP}C.jpg
+			convert ${WSATP}C.jpg -resize 40% ${WBASE}/t${SAT}C.jpg
 
 			# creating thermal image & tumbnail
 			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e therm \
 				${WSATP}.wav ${WSATP}T.jpg
-			convert ${WSATP}T.jpg -resize 40% t${WSATP}T.jpg
+			convert ${WSATP}T.jpg -resize 40% ${WBASE}/t${SAT}T.jpg
 
 			# creating 3d image & tumbnail
 			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e anaglyph \
 				${WSATP}.wav ${WSATP}3D.jpg
-			convert ${WSATP}3D.jpg -resize 40% t${WSATP}3D.jpg
+			convert ${WSATP}3D.jpg -resize 40% ${WBASE}/t${SAT}3D.jpg
 		fi
 
 		# copy index to folder
