@@ -98,9 +98,9 @@ sudo apt install git make
 
 - Login in your into SBC and clone this repository `git clone https://github.com/stdevPavelmc/FAASGS`.
 - Change to the created folder `cd FAASGS`.
-- Run install script `make install`.
+- Run install script `sudo make install`.
 - Configure your local data (see [Configuring](#configuring) below)
-- Execute it by hand to check if all works `sats.sh`.
+- Execute it by hand to check if all works `sudo ./sats.sh`.
   -  Go to your IP address and check if there is any 'next pass' scheduled.
 - If all gone ok, run the schedule script to make it run for good `make permanent`
 
@@ -108,11 +108,11 @@ sudo apt install git make
 
 After the install step you need to configure your local data, you callsign (use N0NAME if you are not a ham radio operator), name, locator (use [this tool](https://www.iz3mez.it/maps.google/ww-loc.html) if you are in doubt), coordinates (use locator tool to check the coordinates too), QTH and the satellites you want to capture.
 
-Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `nano user.conf`. You will find a proxy setting there to, if you don't use a proxy just make what the comment says.
+Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `duso nano user.conf`. You will find a proxy setting there to, if you don't use a proxy just make what the comment says.
 
 Next step is to select the satellites you want to monitor, the file is named `sats.json` and it has a very common web format, you can add or remove sats as your need.
 
-Use `nano sats,json` to edit the file, it came by default with all the working NOAA satellites and the working VHF ones, but if you have a dualband antenna you can introduce some UHF sats also.
+Use `nano sats.json` to edit the file, it came by default with all the working NOAA satellites and the working VHF ones, but if you have a dualband antenna you can introduce some UHF sats also.
 
 Please note that the satellites has a name and a nickname, the name reffers to the one that appears in the TLE file and the nickname is a friendly name for us (and must not contain spaces, parenthesis, slashes, etc)
 
@@ -122,10 +122,10 @@ This siftware is designed to be upgradeable with little eforts, just follow this
 
 - Login into your SBC and change to the folder you cloned the repository in the past.
 - Update the software with this command `git pull` if there is an update you will be notified about the files that has changed.
-- Clean the workspace with this command `make clean`
-- Install the new version of the software `make install`.
+- Clean the workspace with this command `sudo make clean`
+- Install the new version of the software `sudo make install`.
 - Configure the user data in `/set/sat_data/user.conf`.
-- Make it permanent with `make permanent`.
+- Make it permanent with `sudo make permanent`.
 
 ## Removing
 
