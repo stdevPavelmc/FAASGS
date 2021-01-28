@@ -12,9 +12,13 @@ A sample of the main view:
 
 ![Main view of the page](images/main.png)
 
-A sample view of a pass (PO-101 DIWATA-2B FM sat):
+A sample view of a pass of PO-101 DIWATA-2B (FM sat):
 
 ![Main view of the page](images/sat.png)
+
+A sample view of a pass of a NOAA weather APT satellite:
+
+![Main view of the page](images/sat_noaa.png)
 
 ## Inspiration
 
