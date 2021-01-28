@@ -27,13 +27,14 @@ cwww: www ## Copy the data to the web folder
 	echo "done" > cwww
 
 deps: ## Install some tools needed by the software
-	sudo apt install -y imagemagick lame sox rtl-sdr librtlsdr0 at
+	sudo apt install -y imagemagick lame sox rtl-sdr librtlsdr0 at sed
 	echo "done" > deps
 
 install: deps cconf cwww ## Install the software
 	sudo rm /usr/local/bin/sats.sh || exit 0
 	sudo ln -s $(PWD)/sat.sh /usr/local/bin/sats.sh
 	chmod +x sat.sh
+	./set_user_data.sh
 	echo "done" > install
 
 permanent: install ## Setup the permanent job at 01 minutes every hour
