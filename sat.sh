@@ -14,9 +14,9 @@ CONFPATH="/etc/sat_data"
 OUTPATH="/var/www/html/sat"
 RTL_PPM=75.5
 USERCONF="${CONFPATH}/user.conf"
-. "${USERCONF}"
+source "${USERCONF}"
 
-# comment this proxy setting if you don't use it
+# proxy setting are defined in the USERCONF variable
 export http_proxy
 export https_proxy
 
@@ -159,7 +159,15 @@ rec_sat_data () {
 
 		# start recording
 		echo "Recording start..."
-		timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" -g 44.5 -E wav -E deemp -F 9 - | sox -t wav - ${WSATP}.wav rate 11025
+		timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
+			-g 44.5 -E wav -E deemp -F 9 - > /tmp/sat.wav
+		sox -t wav /tmp/sat.wav ${WSATP}.wav rate 11025
+		rm /tmp/sat.wav
+
+		# will allow to erase the folder by the user?
+		if [ "$ALLOW_REMOVE_FOLDER" == "no" -o "$ALLOW_REMOVE_FOLDER" == "No" ]; then
+			touch "${OUTPATH}/${BASE}/noerase"
+		fi
 
 		# audio process
 		echo "Audio processing"
@@ -188,7 +196,7 @@ rec_sat_data () {
 			rm ${WSATP}-*.png
 
 			# convert it to mp3 as this are audio only, with full quality
-			lame -a -b 32 -q 0 --add-id3v2 --ti ${WSATP}.png \
+			lame -a -b 32 -q 0 --add-id3v2 --ti ${WSATP}.png --silent \
 				--ta "${CALL} (${LOC}) automatic Satellite Ground Station" \
 				--tt "${SAT} rx at ${FREQ}MHz in ${LOC} by ${CALL}, ${time_now}, max elev ${MAXELEV}, ${DURATION}s pass" \
 				--ty 2021 ${WSATP}.wav ${WSATP}.mp3
@@ -208,14 +216,25 @@ rec_sat_data () {
 			wxmap -T "${name}" -H "${CONFPATH}/data.txt" \
 				-p 0 -l 0 -o ${NAOS} ${WSATP}-map.png
 
-			# creating standard image
-			wxtoimg -m ${WSATP}-map.png -e HVC ${WSATP}.wav ${WSATP}.png
+			# creating standard image & tumbnail
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e HVC -K \
+				${WSATP}.wav ${WSATP}.jpg
+			convert ${WSATP}.jpg -resize 40% t${WSATP}.jpg
 
-			# creating colored image
-			wxtoimg -m ${WSATP}-map.png -e MSA ${WSATP}.wav ${WSATP}C.png
+			# creating colored image & tumbnail
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e MSA \
+				${WSATP}.wav ${WSATP}C.jpg
+			convert ${WSATP}C.jpg -resize 40% t${WSATP}C.jpg
 
-			# creating thermal image
-			wxtoimg -m ${WSATP}-map.png -e therm ${WSATP}.wav ${WSATP}T.png
+			# creating thermal image & tumbnail
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e therm \
+				${WSATP}.wav ${WSATP}T.jpg
+			convert ${WSATP}T.jpg -resize 40% t${WSATP}T.jpg
+
+			# creating 3d image & tumbnail
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e anaglyph \
+				${WSATP}.wav ${WSATP}3D.jpg
+			convert ${WSATP}3D.jpg -resize 40% t${WSATP}3D.jpg
 		fi
 
 		# copy index to folder
