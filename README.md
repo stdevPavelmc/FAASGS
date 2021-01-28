@@ -88,7 +88,7 @@ You need at least `git` and `make`, in most linux (including SBCs) you are set b
 sudo apt install git make
 ```
 
-# Real install
+## Real install
 
 - Login in your into SBC and clone this repository `git clone https://github.com/stdevPavelmc/FAASGS`.
 - Change to the created folder `cd FAASGS`.
