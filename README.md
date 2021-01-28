@@ -45,6 +45,8 @@ This proyect is inspired and heavily based on the work of [Luick Klippel](https:
 
 ## Installation steps
 
+**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` command before the installation will do it.
+
 ### pre-installation requisites
 
 As this tool relies on many tools I will not explain how to setup each one, but I will give you clues of where to get info about it.
