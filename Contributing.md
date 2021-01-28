@@ -6,7 +6,7 @@ Code contributions are welcomed!
 
 This document stablish the process and workflows as per github and gitflow good practices (in some cases simplified and relaxed), if in doubt please take a peek [here](https://medium.com/@devmrin/learn-complete-gitflow-workflow-basics-how-to-from-start-to-finish-8756ad5b7394) or [here](https://nvie.com/posts/a-successful-git-branching-model/)
 
-This practices must appear so "elite" or "cathedral style" at first, but believe me you will thanks me for teaching you this if you pretend to work for a bigger or professional soft company. At the end and with the time you will see how easy is to pin-point any info from the entangle of branches, issues, travis, etc.
+This practices must appear so "elite" or "cathedral style" at first, but believe me you will thanks me for teaching you this if you pretend to work for a bigger project or a professional soft company. At the end and with the time you will see how easy is to pin-point any info from the entangle of branches, issues, travis, etc.
 
 At first we will be easy with this but people, please catch the (git)flow ASAP.
 
@@ -14,7 +14,7 @@ At first we will be easy with this but people, please catch the (git)flow ASAP.
 
 Yes, it's all about issues, every change must have a reference issue in which the dev team can debate about, and branches that name the user and issue it's working on.
 
-So if you need to do a change, fix something or add a new feature, please open an issue or feature for it. Once you have a issue number to work with, create a branch from latest develop in YOUR own fork and name it user_t#_short_description_of_issue, see here where I created a branch named stdevPavelmc_t8_travis_integration where the number is the issue number
+So if you need to do a change, fix something or add a new feature, please open an issue for it. Once you have a issue number to work with, create a branch from latest develop in YOUR own fork and name it user_t#_short_description_of_issue, for example: `stdevPavelmc_t8_travis_integration` where the "t8" is the issue number
 
 ## Commits
 
@@ -28,17 +28,19 @@ Pull request are intentions to merge some code into the main tree, you can open 
 
 In fact it's a recommended practice, open an issue, analyze, make your first commit and open the pull request ride away; in this way changes will be picked by travis and CI/CD will fire to tell you if your changes are good o broke something. (If I setup a travis workflow in the future...)
 
-As a general rule a pull request must end with a comment on which you mentions @stdevPavelmc and estate that the pull request is ready to merge.
+As a general rule a pull request must end with a comment on which you mentions @stdevPavelmc and estate that the pull request is ready to review & merge.
 
 The merge action by the repo owner (@stdevPavelmc) will automatically close the corresponding pull request and the issue just by adding a comment like this to the comment of the merge "Closing issue #8..." github will do the magic and will (if travis build is a success) close the PR and the matching issue, all in just one place.
 
 ## Community recognition
 
-Yes, just by sharing the existance of this project you will be giving it a community recognition; share the link of proyect with your experiences in your social media networks, mentione it to other hams, etc. It will be appreciated.
+Yes, just by sharing the existance of this project you will be giving it a community recognition; share the link of proyect with your experiences in your social media networks, mention it to other hams, etc. It will be appreciated.
 
 ## Hardware, Parts and other Ham goods via direct delivery...
 
 If by chance you have a planed trip to Cuba (or a relative o a close known person of trust) and you remember about me; and by chance you can donate a old/unused HT, a Raspberry or any other electronics goods, please contact me and I will give you precise instructions on how to make it trough custom.
+
+That kind of thing are really hard to get here.
 
 ## Monetary contributions
 
