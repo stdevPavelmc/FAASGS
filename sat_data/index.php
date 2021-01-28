@@ -119,10 +119,7 @@ foreach ($detailsfile as $vars) {
                     <img src="../../img/audio.png" />
                     <span class="tooltiptext">Click to play, Right click, then save link to download.</span>
                 </a>
-                <a class="tooltip" href=<?php echo "'./".$satname.".png'"; ?>>
-                    <img src="../../img/image.png" />
-                    <span class="tooltiptext">Click to view the original image, Right click, then save link to download.</span>
-                </a>
+
                 <a class="tooltip" href="#" onclick="window.close();">
                     <img src="../../img/back.png" />
                     <span class="tooltiptext">Close this windows and go back to listing.</span>
@@ -134,7 +131,7 @@ foreach ($detailsfile as $vars) {
                 ?>
                 <a class="tooltip" href="./?delete=true" onclick="return confirm_erase();">
                     <img src="../../img/delete.png" />
-                    <span class="tooltiptext">Click to erase the folder if any data was captured.</span>
+                    <span class="tooltiptext">Click to erase the folder if any valuable data was captured.</span>
                 </a>
                 <?php
                 }
