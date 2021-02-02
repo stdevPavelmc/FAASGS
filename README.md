@@ -4,7 +4,7 @@ A setup to build a satellite ground stations that can tune, record and generate 
 
 This is the software recipe, in the hardware part I used an [Orange Pi Prime Board](http://www.orangepi.org/OrangePiPrime/) but you can use any [Single Board Computer](https://en.wikipedia.org/wiki/Single-board_computer), including Raspberry Pis, O-droids and even a normal PC or Server.
 
-The only advice is to use one with a multiple cores and at least 1GB of RAM as some task are resource intensives.
+The only advice is to use one with a multiple cores and at least 1GB of RAM as some task are resource intensive.
 
 I used [Armbian](https://www.armbian.com/) as OS, but you can manage it to make it work with [RaspiOS](https://www.raspberrypi.org/software/) or any other linux distro with a little of work.
 
@@ -22,7 +22,7 @@ A sample view of a pass of a NOAA weather APT satellite:
 
 ## Inspiration
 
-This proyect is inspired and heavily based on the work of [Luick Klippel](https://github.com/luickk) and his work on his [NOAA Satellite Station](https://github.com/luickk/noaa_satellite_ground_station) repository.
+This project is inspired and heavily based on the work of [Luick Klippel](https://github.com/luickk) and his work on his [NOAA Satellite Station](https://github.com/luickk/noaa_satellite_ground_station) repository.
 
 ## Features
 
@@ -45,7 +45,7 @@ This proyect is inspired and heavily based on the work of [Luick Klippel](https:
 
 ## Installation steps
 
-**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` command before the installation will do it.
+**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.
 
 ### pre-installation requisites
 
@@ -98,6 +98,7 @@ sudo apt install git make
 
 - Login in your into SBC and clone this repository `git clone https://github.com/stdevPavelmc/FAASGS`.
 - Change to the created folder `cd FAASGS`.
+- Gain root access via `sudo -i`
 - Run install script `make install`.
 - Configure your local data (see [Configuring](#configuring) below)
 - Execute it by hand to check if all works `sats.sh`.
@@ -108,20 +109,21 @@ sudo apt install git make
 
 After the install step you need to configure your local data, you callsign (use N0NAME if you are not a ham radio operator), name, locator (use [this tool](https://www.iz3mez.it/maps.google/ww-loc.html) if you are in doubt), coordinates (use locator tool to check the coordinates too), QTH and the satellites you want to capture.
 
-Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `nano user.conf`. You will find a proxy setting there to, if you don't use a proxy just make what the comment says.
+Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `sudo nano user.conf`. You will find a proxy setting there to, if you don't use a proxy just make what the comment says.
 
 Next step is to select the satellites you want to monitor, the file is named `sats.json` and it has a very common web format, you can add or remove sats as your need.
 
-Use `nano sats,json` to edit the file, it came by default with all the working NOAA satellites and the working VHF ones, but if you have a dualband antenna you can introduce some UHF sats also.
+Use `sudo nano sats.json` to edit the file, it came by default with all the working NOAA satellites and the working VHF ones, but if you have a dualband antenna you can introduce some UHF sats also.
 
-Please note that the satellites has a name and a nickname, the name reffers to the one that appears in the TLE file and the nickname is a friendly name for us (and must not contain spaces, parenthesis, slashes, etc)
+Please note that the satellites has a name and a nickname, the name refers to the one that appears in the TLE file and the nickname is a friendly name for us (and must not contain spaces, parenthesis, slashes, etc)
 
 ## Upgrading
 
-This siftware is designed to be upgradeable with little eforts, just follow this steps:
+This software is designed to be upgradeable with little eforts, just follow this steps:
 
 - Login into your SBC and change to the folder you cloned the repository in the past.
 - Update the software with this command `git pull` if there is an update you will be notified about the files that has changed.
+- Gain root access via `sudo -i`
 - Clean the workspace with this command `make clean`
 - Install the new version of the software `make install`.
 - Configure the user data in `/set/sat_data/user.conf`.
