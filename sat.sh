@@ -212,29 +212,57 @@ rec_sat_data () {
 			# adjust the AOS time for the map slant
 			NAOS=`expr ${AOSZ} + 90`
 
+			# map options
+			MAP_OPTS=""
+			if [ "$APT_MAP_QTH" == "yes" ] ; then
+				MAP_OPTS="-l 1 -n ${LOC_NAME},${LOC_COUNTRY}"
+			else
+				MAP_OPTS="-l 0"
+			fi
+			if [ "$APT_CITIES" == "yes" ] ; then
+				MAP_OPTS="$MAP_OPTS -p 200000"
+			fi
+			if [ "$APT_ARTIFACTS" == "yes" ] ; then
+				MAP_OPTS="$MAP_OPTS -K 1 -R 1 -C 1 -S 1 -f 1 -F 1"
+			else
+				MAP_OPTS="$MAP_OPTS -K 0 -R 0 -C 1 -S 0 -f 0 -F 0"
+			fi
+
+			# process options
+			APT_OPTS=""
+			if [ "$APT_AUTOCROP" != "yes" ] ; then
+				APT_OPTS="$APT_OPTS -A"
+			fi
+			if [ "$APT_CROP_TELEMETRY" == "yes" ] ; then
+				APT_OPTS="$APT_OPTS -c"
+			fi
+			if [ "$APT_OVERSAMPLE" == "yes" ] ; then
+				APT_OPTS="$APT_OPTS -I"
+			fi
+
 			# creating map overlay
 			wxmap -T "${name}" -H "${CONFPATH}/data.txt" \
-				-p 0 -l 0 -o ${NAOS} ${WSATP}-map.png
+				${MAP_OPTS} -q -o ${NAOS} ${WSATP}-map.png
 
 			# creating standard image & tumbnail
-			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e HVC -K \
-				${WSATP}.wav ${WSATP}.jpg
-			convert ${WSATP}.jpg -resize 40% ${WBASE}/t${SAT}.jpg
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n ${APT_OPTS} -e HVC -K \
+				-q ${WSATP}.wav ${WSATP}.${APT_IMAGE_FORMAT}
+			convert ${WSATP}.${APT_IMAGE_FORMAT} -resize 40% ${WBASE}/t${SAT}.jpg
 
 			# creating colored image & tumbnail
-			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e MSA \
-				${WSATP}.wav ${WSATP}C.jpg
-			convert ${WSATP}C.jpg -resize 40% ${WBASE}/t${SAT}C.jpg
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n ${APT_OPTS} -e MSA \
+				-q ${WSATP}.wav ${WSATP}C.${APT_IMAGE_FORMAT}
+			convert ${WSATP}C.${APT_IMAGE_FORMAT} -resize 40% ${WBASE}/t${SAT}C.jpg
 
 			# creating thermal image & tumbnail
-			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -A -c -e therm \
-				${WSATP}.wav ${WSATP}T.jpg
-			convert ${WSATP}T.jpg -resize 40% ${WBASE}/t${SAT}T.jpg
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n ${APT_OPTS} -e therm \
+				-q ${WSATP}.wav ${WSATP}T.${APT_IMAGE_FORMAT}
+			convert ${WSATP}T.${APT_IMAGE_FORMAT} -resize 40% ${WBASE}/t${SAT}T.jpg
 
 			# creating 3d image & tumbnail
-			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n -I -c -e anaglyph \
-				${WSATP}.wav ${WSATP}3D.jpg
-			convert ${WSATP}3D.jpg -resize 40% ${WBASE}/t${SAT}3D.jpg
+			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n ${APT_OPTS} -e anaglyph \
+				-q ${WSATP}.wav ${WSATP}3D.${APT_IMAGE_FORMAT}
+			convert ${WSATP}3D.${APT_IMAGE_FORMAT} -resize 40% ${WBASE}/t${SAT}3D.jpg
 		fi
 
 		# copy index to folder
