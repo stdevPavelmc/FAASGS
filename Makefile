@@ -18,7 +18,7 @@ wwwt: ## Create the www folders
 	sudo rm /var/www/html/index.html
 	echo "done" > wwwt
 
-cwww: www ## Copy the data to the web folder
+cwww: wwwt ## Copy the data to the web folder
 	sudo cp -fr www/* /var/www/html/
 	sudo mkdir /var/www/html/sat/ || exit 0
 	sudo chown -R 33:33 /var/www/

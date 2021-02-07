@@ -66,6 +66,8 @@ foreach ($detailsfile as $vars) {
 <html>
     <head>
         <title>Satelite <?php echo $satname." / ".$satfreq; ?></title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-view,initial-scale=1.0"/>
         <link rel="stylesheet" href="../../style.css" debug="false">
         <script type="text/javascript">
             function confirm_erase() {
@@ -76,8 +78,6 @@ foreach ($detailsfile as $vars) {
                 }
             }
 	    </script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-view,initial-scale=1.0"/>
     </head>
     <body class="body">
     <div class="wrap">
@@ -108,8 +108,7 @@ foreach ($detailsfile as $vars) {
             <div class="sdata">
                 <?php echo $satlong." (min:secs)";?>
             </div>
-
-            <div class="sat_data_head">&nbsp;</div>
+            <span class="spacer">&nbsp;</span>
             <div class="titlehead">Actions</div>
             <div class="thumbs">
                 <a class="tooltip" href=<?php
@@ -121,7 +120,6 @@ foreach ($detailsfile as $vars) {
                     <img src="../../img/audio.png" />
                     <span class="tooltiptext">Click to play, Right click, then save link to download.</span>
                 </a>
-
                 <a class="tooltip" href="#" onclick="window.close();">
                     <img src="../../img/back.png" />
                     <span class="tooltiptext">Close this windows and go back to listing.</span>
@@ -133,7 +131,7 @@ foreach ($detailsfile as $vars) {
                 ?>
                 <a class="tooltip" href="./?delete=true" onclick="return confirm_erase();">
                     <img src="../../img/delete.png" />
-                    <span class="tooltiptext">Click to erase the folder if any valuable data was captured.</span>
+                    <span class="tooltiptext">Click to erase the folder if any data was captured.</span>
                 </a>
                 <?php
                 }
@@ -142,30 +140,156 @@ foreach ($detailsfile as $vars) {
             </div>
         </div>
         <div class="image">
+            <!--
+                Files are loaded in a smart way, only if they exist on the directory,
+                So we check it with PHP and then and only then we show the section.
+
+                We also check for legacy files from early version of the soft
+            -->
             <?php
-            // in early version all files are png, in modern ones they are jpeg
-            $ext = "jpg";
-
-            if (!file_exists(getcwd()."/".$satname.".".$ext)) {
-                $ext = "png";
-            }
-
-            // NOAA or voice?
-            if (strpos($satname, 'NOAA') !== false) {
+                // NOAA or voice?
+                if (strpos($satname, 'NOAA') !== false) {
             ?>
             <div class="thumbs">
-                <a href=<?php echo "'".$satname."C.".$ext."'"; ?>  target="_blank">
-                    <img src=<?php echo "'t".$satname."C.jpg'"; ?>/>
+
+                <!-- ### Color image ### -->
+                <?php
+                    if (file_exists(getcwd()."/".$satname."C.png")) {
+                ?>
+                <!-- Color image PNG Found! -->
+                <a href=<?php echo "'".$satname."C.png'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."C.jpg")) {
+                            echo "'t".$satname."C.jpg'";
+                        } else {
+                            echo "'".$satname."C.png'";
+                        }
+                    ?>/>
                 </a>
-                <a href=<?php echo "'".$satname.".".$ext."'"; ?> target="_blank">
-                    <img src=<?php echo "'t".$satname.".jpg'"; ?> />
+                <?php
+                    } else if (file_exists(getcwd()."/".$satname."C.jpg")) {
+                ?>
+                <!-- Color image JPEG Found! -->
+                <a href=<?php echo "'".$satname."C.jpg'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."C.jpg")) {
+                            echo "'t".$satname."C.jpg'";
+                        } else {
+                            echo "'".$satname.".jpg'";
+                        }
+                    ?>/>
                 </a>
-                <a href=<?php echo "'".$satname."T.".$ext."'"; ?>  target="_blank">
-                    <img src=<?php echo "'t".$satname."T.jpg'"; ?> />
+                <?php
+                    } else if (file_exists(getcwd()."/NOAAC.png")) {
+                ?>
+                <!-- Color image LEGACY NOAA.png Found! -->
+                <a href=<?php echo "'NOAAC.png'"; ?>  target="_blank">
+                    <img src=<?php echo "'NOAAC.png'"; ?>/>
                 </a>
-                <a href=<?php echo "'".$satname."3D.".$ext."'"; ?> target="_blank">
-                    <img src=<?php echo "'t".$satname."3D.jpg'"; ?> />
+                <?php
+                    }
+                ?>
+
+                <!-- ### Grey image ### -->
+                <?php
+                    if (file_exists(getcwd()."/".$satname.".png")) {
+                ?>
+                <!-- Grey image PNG Found! -->
+                <a href=<?php echo "'".$satname.".png'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname.".jpg")) {
+                            echo "'t".$satname.".jpg'";
+                        } else {
+                            echo "'".$satname.".png'";
+                        }
+                    ?>/>
                 </a>
+                <?php
+                    } else if (file_exists(getcwd()."/".$satname.".jpg")) {
+                ?>
+                <!-- Grey image JPEG Found! -->
+                <a href=<?php echo "'".$satname.".jpg'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname.".jpg")) {
+                            echo "'t".$satname.".jpg'";
+                        } else {
+                            echo "'".$satname.".jpg'";
+                        }
+                    ?>/>
+                </a>
+                <?php
+                    } else if (file_exists(getcwd()."/NOAA.png")) {
+                ?>
+                <!-- Color image LEGACY NOAA.png Found! -->
+                <a href=<?php echo "'NOAA.png'"; ?>  target="_blank">
+                    <img src=<?php echo "'NOAA.png'"; ?>/>
+                </a>
+                <?php
+                    }
+                ?>
+
+                <!-- ### Thermal image ### -->
+                <?php
+                    if (file_exists(getcwd()."/".$satname."T.png")) {
+                ?>
+                <!-- Thermal image PNG Found! -->
+                <a href=<?php echo "'".$satname."T.png'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."T.jpg")) {
+                            echo "'t".$satname."T.jpg'";
+                        } else {
+                            echo "'".$satname."T.png'";
+                        }
+                    ?>/>
+                </a>
+                <?php
+                    } else if (file_exists(getcwd()."/".$satname."T.jpg")) {
+                ?>
+                <!-- Thermal image JPEG Found! -->
+                <a href=<?php echo "'".$satname."T.jpg'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."T.jpg")) {
+                            echo "'t".$satname."T.jpg'";
+                        } else {
+                            echo "'".$satname."T.jpg'";
+                        }
+                    ?>/>
+                </a>
+                <?php
+                    }
+                ?>
+
+                <!-- ### 3D image ### -->
+                <?php
+                    if (file_exists(getcwd()."/".$satname."3D.png")) {
+                ?>
+                <!-- 3D image PNG Found! -->
+                <a href=<?php echo "'".$satname."3D.png'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."3D.jpg")) {
+                            echo "'t".$satname."3D.jpg'";
+                        } else {
+                            echo "'".$satname."3D.png'";
+                        }
+                    ?>/>
+                </a>
+                <?php
+                    } else if (file_exists(getcwd()."/".$satname."3D.jpg")) {
+                ?>
+                <!-- 3D image JPEG Found! -->
+                <a href=<?php echo "'".$satname."3D.jpg'"; ?>  target="_blank">
+                    <img src=<?php
+                        if (file_exists(getcwd()."/t".$satname."3D.jpg")) {
+                            echo "'t".$satname."3D.jpg'";
+                        } else {
+                            echo "'".$satname."3D.jpg'";
+                        }
+                    ?>/>
+                </a>
+                <?php
+                    }
+                ?>
+
                 <span class="stretch"></span>
             </div>
             <?php
@@ -173,8 +297,8 @@ foreach ($detailsfile as $vars) {
             } else {
                 // is a voice sat
             ?>
-            <a href=<?php echo "'".$satname.".".$ext."'"; ?> target="_blank" >
-                <img src=<?php echo "'".$satname.".".$ext."'"; ?> style="max-width: 100%; max-height: 100%; display: block;"/>
+            <a href=<?php echo "'".$satname.".png'"; ?> target="_blank" >
+                <img src=<?php echo "'".$satname.".png'"; ?> style="max-width: 100%; max-height: 100%; display: block;"/>
             </a>
             <?php
 
