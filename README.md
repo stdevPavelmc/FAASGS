@@ -2,7 +2,7 @@
 
 A setup to build a satellite ground stations that can tune, record and generate images for FM and APT weather satellites.
 
-This is the software recipe, in the hardware part I used an [Orange Pi Prime Board](http://www.orangepi.org/OrangePiPrime/) but you can use any [Single Board Computer](https://en.wikipedia.org/wiki/Single-board_computer), including Raspberry Pis, O-droids and even a normal PC or Server.
+This is the software recipe, in the hardware part I used an [Orange Pi Prime Board](http://www.orangepi.org/OrangePiPrime/) but you can use any [Single Board Computer](https://en.wikipedia.org/wiki/Single-board_computer), including Raspberry Pis (Note: see section "Installation note in Raspberry Pi OS"), O-droids and even a normal PC or Server.
 
 The only advice is to use one with a multiple cores and at least 1GB of RAM as some task are resource intensive.
 
@@ -93,6 +93,10 @@ You need at least `git` and `make`, in most linux (including SBCs) you are set b
 ```sh
 sudo apt install git make
 ```
+
+- **Installation note in Raspberry Pi OS**
+
+For some unknown reason the `rtl_fm` tool lacks the `-E wav` option as @takagiwa found, the solution is to compile the trl-fm from upstream, see [this comment](https://github.com/stdevPavelmc/FAASGS/issues/13#issuecomment-774592768) for details.
 
 ## Real install
 
