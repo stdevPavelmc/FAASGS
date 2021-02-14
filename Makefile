@@ -15,7 +15,7 @@ cconf: conf ## Copy the config files
 
 wwwt: ## Create the www folders
 	sudo mkdir -p /var/www/html/ || exit 0
-	sudo rm /var/www/html/index.html
+	sudo rm /var/www/html/index.html || exit 0
 	echo "done" > wwwt
 
 cwww: wwwt ## Copy the data to the web folder
