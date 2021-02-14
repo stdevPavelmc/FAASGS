@@ -103,17 +103,20 @@ For some unknown reason the `rtl_fm` tool lacks the `-E wav` option as @takagiwa
 - Login in your into SBC and clone this repository `git clone https://github.com/stdevPavelmc/FAASGS`.
 - Change to the created folder `cd FAASGS`.
 - Gain root access via `sudo -i`
-- Run install script `make install`.
+- Run configuration steps `make cconf`.
 - Configure your local data (see [Configuring](#configuring) below)
+- Run install script `make install`.
 - Execute it by hand to check if all works `sats.sh`.
   -  Go to your IP address and check if there is any 'next pass' scheduled.
 - If all gone ok, run the schedule script to make it run for good `make permanent`
 
 ## Configuring
 
-After the install step you need to configure your local data, you callsign (use N0NAME if you are not a ham radio operator), name, locator (use [this tool](https://www.iz3mez.it/maps.google/ww-loc.html) if you are in doubt), coordinates (use locator tool to check the coordinates too), QTH and the satellites you want to capture.
+After the configure step you need to modify your local data, you callsign (use N0NAME if you are not a ham radio operator), name, locator (use [this tool](https://www.iz3mez.it/maps.google/ww-loc.html) if you are in doubt), coordinates (use locator tool to check the coordinates too), QTH and the satellites you want to capture.
 
-Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `sudo nano user.conf`. You will find a proxy setting there to, if you don't use a proxy just make what the comment says.
+Just go to `/etc/sat_data` and edit a file named `user.conf` with the command `sudo nano user.conf` to fill your data.
+
+You will find a proxy setting there to, if you don't use a proxy just leave it as is, if you use a proxy then follow the comments.
 
 Next step is to select the satellites you want to monitor, the file is named `sats.json` and it has a very common web format, you can add or remove sats as your need.
 
@@ -126,11 +129,11 @@ Please note that the satellites has a name and a nickname, the name refers to th
 This software is designed to be upgradeable with little eforts, just follow this steps:
 
 - Login into your SBC and change to the folder you cloned the repository in the past.
-- Update the software with this command `git pull` if there is an update you will be notified about the files that has changed.
 - Gain root access via `sudo -i`
+- Update the software with this command `git pull` if there is an update you will be notified about the files that has changed.
+  - If you get a warning about it can merge the data, just do this `git reset --hard` tha twill reset the tree then repeat the `git pull`. 
 - Clean the workspace with this command `make clean`
 - Install the new version of the software `make install`.
-- Configure the user data in `/set/sat_data/user.conf`.
 - Make it permanent with `make permanent`.
 
 ## Removing
