@@ -27,7 +27,7 @@ cwww: wwwt ## Copy the data to the web folder
 	echo "done" > cwww
 
 deps: ## Install some tools needed by the software
-	sudo apt install -y imagemagick lame sox rtl-sdr librtlsdr0 at sed
+	sudo apt install -y imagemagick lame sox rtl-sdr librtlsdr0 at sed jq
 	echo "done" > deps
 
 install: deps cconf cwww ## Install the software
