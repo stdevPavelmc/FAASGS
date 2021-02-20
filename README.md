@@ -45,7 +45,7 @@ This project is inspired and heavily based on the work of [Luick Klippel](https:
 
 ## Installation steps
 
-<span style="color: red">**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.</span>
+![warning](images/warning.png) **Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.
 
 ### pre-installation requisites
 
