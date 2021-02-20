@@ -45,7 +45,7 @@ This project is inspired and heavily based on the work of [Luick Klippel](https:
 
 ## Installation steps
 
-**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.
+<span style="color: red">**Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.</span>
 
 ### pre-installation requisites
 
@@ -151,10 +151,14 @@ I have not spoken about antennas and RF in this document because that relies on 
 
 As usual, the higher and un-obstructed view for the antenna the better, also for coax: top quality ones and as short as possible.
 
+## This is FREE SOFTWARE!
+
+Free as in freedom, no payment are needed, see the LICENCE file for details.
+
+If this is software is of any utility to you; please consider to make a donation to keep me improving it, see [Contributing](Contributing.md) file for details.
+
 ## Contributing
 
 You can improve the software, appoint bugs or fails, donate equipment or money, top up my cell phone, or just share your impressions on social media; details for all of that in the [Contributing](Contributing.md) file.
 
-## This is FREE SOFTWARE!
-
-Free as in freedom, no payment are needed, see the LICENCE file for details.
+Any contribution is welcomed.
