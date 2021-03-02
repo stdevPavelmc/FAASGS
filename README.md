@@ -111,7 +111,7 @@ sudo apt install git make
 
 - **Installation note in Raspberry Pi OS**
 
-For some unknown reason the `rtl_fm` tool lacks the `-E wav` option as @takagiwa found, the solution is to compile the trl-fm from upstream, see [this comment](https://github.com/stdevPavelmc/FAASGS/issues/13#issuecomment-774592768) for details.
+For some unknown reason the `rtl_fm` tool lacks the `-E wav` option as @takagiwa found, the solution is to compile the rtl-fm from upstream, see [this comment](https://github.com/stdevPavelmc/FAASGS/issues/13#issuecomment-774592768) for details.
 
 ## Real install
 
