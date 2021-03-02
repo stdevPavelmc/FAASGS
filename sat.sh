@@ -168,7 +168,7 @@ rec_sat_data () {
 		else
 			# streamed (piped) capture only on fast/dedicated systems
 			timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
-				g 44.5 -E deemp -F 9 - | \
+				-g 44.5 -E deemp -F 9 - | \
 				sox -t raw -r "${rxbw}" -e signed -b 16 -c 1 - ${WSATP}.wav rate 11025
 		fi
 
