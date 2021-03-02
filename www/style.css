@@ -1,3 +1,7 @@
+table {
+  table-layout: fixed;
+}
+
 .body {
     background-color: #000;
     color: beige;
@@ -36,20 +40,18 @@
 }
 
 .left_container {
-    width: 45%;
+    width: 50%;
     height: 95%;
     float:left;
     padding-top: 1%;
-    padding-left: 3%;
     padding-right: 2%;
 }
 
 .right_container {
-    width: 45%;
+    width: 50%;
     height: 95%;
     float: right;
     padding-top: 1%;
-    padding-left: 2%;
     padding-right: 3%;
     overflow: hidden;
     overflow-x: hidden;
@@ -139,7 +141,6 @@
     width: 40%;
     height: 100%;
     float: left;
-    padding-left: 1%;
     padding-right: 2%;
 }
 
@@ -218,7 +219,7 @@
     padding-top: 10px;
     display: inline-block;
     *display: inline;
-    zoom: 1;
+    max-width: 45%;
 }
 
 .thumbs a img {
@@ -245,4 +246,51 @@
         position:relative;
         width:100%;
     }
+    .left_container{
+        width: 100%;
+        height: 100%;
+    }
+    .left_sc{
+        width: 100%;
+        height: 100%;
+    }
+    .right_container{
+        width: 100%;
+        height: 100%;
+    }
+    .comments {
+        display: none;
+    }
+    .qth_header {
+        height: 100%;
+    }
+    .qth_header img {
+        display: none;
+    }
+    .scrollable table {
+        width: 100%;
+        padding: 0px;
+    }
+}
+
+.centered {
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.loader {
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

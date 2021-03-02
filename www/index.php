@@ -6,6 +6,8 @@
         <title>
             Automatic Satellite Ground Station
         </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-view,initial-scale=1.0"/>
         <link rel="stylesheet" href="./style.css" debug="false">
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript">
@@ -25,12 +27,10 @@
                 window.open(sat_folder);
             }
 	    </script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-view,initial-scale=1.0"/>
     </head>
     <body class="body">
-        <div id='page'>
-            <div id='left' class="left_container">
+        <div class='wrap'>
+            <div class="left_container">
                 <div class="qth_header">
                     <div class="user">
                         <h5>Automatic Satellite Ground Station</h5>
