@@ -1,3 +1,7 @@
+table {
+  table-layout: fixed;
+}
+
 .body {
     background-color: #000;
     color: beige;
@@ -36,20 +40,18 @@
 }
 
 .left_container {
-    width: 45%;
+    width: 50%;
     height: 95%;
     float:left;
     padding-top: 1%;
-    padding-left: 3%;
     padding-right: 2%;
 }
 
 .right_container {
-    width: 45%;
+    width: 50%;
     height: 95%;
     float: right;
     padding-top: 1%;
-    padding-left: 2%;
     padding-right: 3%;
     overflow: hidden;
     overflow-x: hidden;
@@ -243,6 +245,31 @@
     .image{
         position:relative;
         width:100%;
+    }
+    .left_container{
+        width: 100%;
+        height: 100%;
+    }
+    .left_sc{
+        width: 100%;
+        height: 100%;
+    }
+    .right_container{
+        width: 100%;
+        height: 100%;
+    }
+    .comments {
+        display: none;
+    }
+    .qth_header {
+        height: 100%;
+    }
+    .qth_header img {
+        display: none;
+    }
+    .scrollable table {
+        width: 100%;
+        padding: 0px;
     }
 }
 
