@@ -159,10 +159,18 @@ rec_sat_data () {
 
 		# start recording
 		echo "Recording start..."
-		timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
-			-g 44.5 -E wav -E deemp -F 9 - > /tmp/sat.wav
-		sox -t wav /tmp/sat.wav ${WSATP}.wav rate 11025
-		rm /tmp/sat.wav
+		if [ "${AUDIO_SBS}" == "yes" -o "${AUDIO_SBS}" == "Yes" ] ; then
+			# step by step audio processing, temp files will be on RAM if armbian os
+			timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
+				-g 44.5 -E wav -E deemp -F 9 - > /tmp/sat.wav
+			sox -t wav /tmp/sat.wav ${WSATP}.wav rate 11025
+			rm /tmp/sat.wav
+		else
+			# streamed (piped) capture only on fast/dedicated systems
+			timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
+				g 44.5 -E deemp -F 9 - | \
+				sox -t raw -r "${rxbw}" -e signed -b 16 -c 1 - ${WSATP}.wav rate 11025
+		fi
 
 		# will allow to erase the folder by the user?
 		if [ "$ALLOW_REMOVE_FOLDER" == "no" -o "$ALLOW_REMOVE_FOLDER" == "No" ]; then

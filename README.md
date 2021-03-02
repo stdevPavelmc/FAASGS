@@ -35,6 +35,7 @@ This project is inspired and heavily based on the work of [Luick Klippel](https:
     - The pass details and receiving station data are stored in the mp3 tags.
 - Automatic decode APT images from WX sats (NOAA 15, 18 and 19)
 - For the voice FM sats we craft a spectrogram and embedd the metadata of the pass on the image.
+- **NEW** selection for audio processing schema: streamed or step by step (first is good on fast or dedicated systems, the former on slow or multitasking ones) see users.conf while installing for more details.
 
 ## Future features?
 
