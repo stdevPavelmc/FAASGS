@@ -67,6 +67,19 @@ sudo apt install predict
 
 For Armbian you need to compile it from source, you can get it from the [Predict home page](https://www.qsl.net/kd2bd/predict.html).
 
+After installing predict you need to do this aditional step to make it run properly (install some files):
+
+```sh
+sudo -i
+mkdir /root/.predict
+cd /root/.predict
+wget https://raw.githubusercontent.com/kd2bd/predict/master/default/predict.db
+wget https://raw.githubusercontent.com/kd2bd/predict/master/default/predict.tle
+wget https://raw.githubusercontent.com/kd2bd/predict/master/default/predict.qth
+# Next step only if using a Rasberry Pi board
+ln -s /root/.predict /home/pi/.predict
+```
+
 - **WXtoImage**
 
 This wonderful piece of software was deprecated by the original authors but a group of enthusiast keep it alive in the [Restored WXtoImage](https://wxtoimgrestored.xyz/) site.
