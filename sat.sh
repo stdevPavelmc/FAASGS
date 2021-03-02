@@ -205,17 +205,13 @@ rec_sat_data () {
 			# NOAA process
 			echo "It's a NOAA Satellite"
 
-			# craft the full name NOAA19 > 'NOAA 19'
-			number=`echo $1 | cut -c 5-6`
-			name="NOAA ${number}"
-
 			# adjust the AOS time for the map slant
 			NAOS=`expr ${AOSZ} + 90`
 
 			# map options
 			MAP_OPTS=""
 			if [ "$APT_MAP_QTH" == "yes" ] ; then
-				MAP_OPTS="-l 1 -n ${LOC_NAME},${LOC_COUNTRY}"
+				MAP_OPTS="-l 1 -n \"${LOC_NAME}, ${LOC_COUNTRY}\""
 			else
 				MAP_OPTS="-l 0"
 			fi
@@ -241,8 +237,11 @@ rec_sat_data () {
 			fi
 
 			# creating map overlay
-			wxmap -T "${name}" -H "${CONFPATH}/data.txt" \
-				${MAP_OPTS} -q -o ${NAOS} ${WSATP}-map.png
+			NOAA=`echo ${SAT} | sed s/"1"/" 1"/`
+			echo "wxmap -T \"${NOAA}\" -H \"${CONFPATH}/data.txt\" ${MAP_OPTS} -q -o ${NAOS} ${WSATP}-map.png" > /tmp/map.sh
+			chmod +x /tmp/map.sh
+			bash /tmp/map.sh
+			rm /tmp/map.sh
 
 			# creating standard image & tumbnail
 			wxtoimg -m ${WSATP}-map.png,${SLANT_X},${SLANT_Y} -t n ${APT_OPTS} -e HVC -K \
