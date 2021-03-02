@@ -55,6 +55,8 @@ As this tool relies on many tools I will not explain how to setup each one, but 
 
 You need a web server with php installed (at least version 7.x, no MySQL or MariaDB support needed), google has a lot of guides indexed, just google for "install nginx and php in [your-operating-system]"
 
+**RaspiOS users**: If the web server works but does not process php files (try to download the index.php file instead of process & show) you must take a peek on this [tutorial](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md) about how to enable php support for nginx.
+
 - **Predict**
 
 You need to install `predict` the software to make predictions of satellite passes.
