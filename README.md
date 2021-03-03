@@ -142,14 +142,17 @@ Please note that the satellites has a name and a nickname, the name refers to th
 
 ## Upgrading
 
-This software is designed to be upgradeable with little eforts, just follow this steps:
+This software is designed to be upgradeable with little efforts, just follow this steps:
 
 - Login into your SBC and change to the folder you cloned the repository in the past.
 - Gain root access via `sudo -i`
 - Update the software with this command `git pull` if there is an update you will be notified about the files that has changed.
   - If you get a warning about it can merge the data, just do this `git reset --hard` tha twill reset the tree then repeat the `git pull`. 
 - Clean the workspace with this command `make clean`
+- Make a backup of your user settings `cp /etc/sat_data/user.conf ~/`
 - Install the new version of the software `make install`.
+- Review and update the file `/etc/sat_data/user.conf` from your backup in `~/user.conf`, Some times new options are added, if you simply overwrite the new with the old you may lose the new options)
+- Test it run on the console `sats.sh` and you must see the shcedule for upcomming passes.
 - Make it permanent with `make permanent`.
 
 ## Removing
