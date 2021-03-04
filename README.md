@@ -170,6 +170,20 @@ I have not spoken about antennas and RF in this document because that relies on 
 
 As usual, the higher and un-obstructed view for the antenna the better, also for coax: top quality ones and as short as possible.
 
+## RTL-SDR Calibration
+
+Almost all RTL-SDR dongles has a clock source deviation from the desired frequency (even the ones that advertise a TXCO with `0,5 ppm error`, it's small but is there), that deviation is measured in ppm (parts per million) and is particular of each device.
+
+The FM mode (mostly used for now) is not very picky with an error of a few kHz (and we have doppler that drift the signal continuously), but as many of you may want to use the ppm correction there is an option in the `user.conf` file to set your device ppm error.
+
+### How to calculate the ppm error of my RTL-SDR?
+
+There is a few good sources of info out there, here list some of them:
+
+- Get ballpark values with [this method](https://davidnelson.me/?p=371), let it run for a few minutes and left the PC alone, use the value after `cumulative PPM:`
+- Calculate it manually against a FM commercial station in the 88-108 MHz band, see [this video](https://www.youtube.com/watch?v=gFXMbr1dgng), pick one with people chatting as you will see the center peak better; that will give you a best that a ballpark value.
+- Get a very accurate measurement by using [this extra tool](http://www.satsignal.eu/raspberry-pi/acars-decoder.html), seek to the **Using Kalibrate** and follow the instructions for Linux or Windows.
+
 ## This is FREE SOFTWARE!
 
 Free as in freedom, no payment are needed, see the LICENCE file for details.
