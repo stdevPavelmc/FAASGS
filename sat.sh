@@ -12,7 +12,6 @@ export PATH
 path="/usr/local/bin/sats.sh"
 CONFPATH="/etc/sat_data"
 OUTPATH="/var/www/html/sat"
-RTL_PPM=75.5
 USERCONF="${CONFPATH}/user.conf"
 source "${USERCONF}"
 
