@@ -19,6 +19,13 @@ source "${USERCONF}"
 export http_proxy
 export https_proxy
 
+# force streamed audio processing if on raspberry OS to avoid
+# lack of -E option in rtl_fm
+source /etc/os-release
+if [ "$ID" == "raspbian" ] ; then
+	AUDIO_SBS="no"
+fi
+
 main () {
 	# check for arguments
     if [ "$#" -eq 0 ]; then
