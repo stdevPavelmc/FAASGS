@@ -1,0 +1,66 @@
+#
+# WXtoImg configuration file written by WXtoImg.
+# "man wxtoimg" or wxtoimg.html for details.
+# WXtoImg version 2.11.2 beta
+#
+#
+Registration Name: Kevin Schuchmann
+Registration Email: fakemail@example.com
+Registration Key: CGHZ-PP9G-EAJZ-AWKK-NDNX
+Signal Type: APT
+Sample Rate: 11025.00
+Ground Station: Camaguey, Cuba
+Latitude: 22.354
+Longitude: -77.958
+Altitude: 100.0
+NOAA\ 12 Is Active: false
+NOAA\ 14 Is Active: false
+NOAA\ 15 Is Active: true
+NOAA\ 16 Is Active: false
+NOAA\ 17 Is Active: false
+NOAA\ 18 Is Active: true
+NOAA\ 19 Is Active: true
+Meteor\ 3-5 Is Active: false
+Meteor\ 2-21 Is Active: false
+Resurs\ O1-N4 Is Active: false
+Okean-O Is Active: false
+SICH-1 Is Active: false
+SICH1M Is Active: false
+GOES Is Active: false
+GMS Is Active: false
+MTSAT Is Active: false
+Meteosat Is Active: false
+NOAA\ 12 Frequency: 137.5000
+NOAA\ 14 Frequency: 137.6200
+NOAA\ 15 Frequency: 137.6200
+NOAA\ 16 Frequency: 137.6200
+NOAA\ 17 Frequency: 137.5000
+NOAA\ 18 Frequency: 137.9125
+NOAA\ 19 Frequency: 137.1000
+Meteor\ 3-5 Frequency: 137.3000
+Meteor\ 2-21 Frequency: 137.4000
+Resurs\ O1-N4 Frequency: 137.8500
+Okean-O Frequency: 137.4000
+SICH-1 Frequency: 137.3800
+SICH1M Frequency: 137.4000
+GOES Frequency: 137.5000
+GMS Frequency: 137.5000
+MTSAT Frequency: 137.5000
+Meteosat Frequency: 137.5000
+NOAA\ 12 Priority: 1
+NOAA\ 14 Priority: 1
+NOAA\ 15 Priority: 1
+NOAA\ 16 Priority: 1
+NOAA\ 17 Priority: 1
+NOAA\ 18 Priority: 1
+NOAA\ 19 Priority: 1
+Meteor\ 3-5 Priority: 2
+Meteor\ 2-21 Priority: 1
+Resurs\ O1-N4 Priority: 1
+Okean-O Priority: 1
+SICH-1 Priority: 1
+SICH1M Priority: 1
+GOES Priority: 5
+GMS Priority: 5
+MTSAT Priority: 5
+Meteosat Priority: 5
