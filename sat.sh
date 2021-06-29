@@ -49,9 +49,15 @@ schedule() {
 		SAT=`echo ${g} | jq .name | tr -d '"'`
 		NICK=`echo ${g} | jq .nick | tr -d '"'`
 		FREQ=`echo ${g} | jq .freq | tr -d '"'`
+		MINELEV=`echo ${g} | jq .minel | tr -d '"'`
+
+		# default min elev
+		if [ "$MINELEV" == "null" ] ; then
+			MINELEV=20
+		fi
 
 		echo "=> $SAT/$NICK"
-		set_sat_cycle "$NICK" "$FREQ"
+		set_sat_cycle "$NICK" "$FREQ" "$MINELEV"
 	done
 }
 
@@ -62,6 +68,7 @@ set_sat_cycle() {
 	# var expansion to make it mopre legible
 	SAT=${1}
 	FREQ=${2}
+	MINEL=${3}
 
 	# prediction
 	PREDICTION=`mktemp`
@@ -86,14 +93,13 @@ set_sat_cycle() {
 	MAXELEV=`cat $PREDICTION | awk -v max=0 '{if($5>max){max=$5}}END{print max}'`
 
 	# check pass elevation
-	if [ $MAXELEV -gt 10 ] ; then
+	if [ ${MAXELEV} -gt ${MINEL} ] ; then
 		echo "   ${AOSHLP}, ${MAXELEV}o, ${DURATION}s"
 
 		# create at job
 		echo "$path ${SAT} ${FREQ} ${AOSHL} ${AOSZ} ${DURATION} ${MAXELEV}" | at `date --date="TZ=\"UTC\" $AOSHZ" +"%H:%M %D"` 2> /dev/null
 
 		# Put passes to pass file
-		#echo "${SAT} (${MAXELEV}), ${FREQ}, ${AOSHLP}" >> ${OUTPATH}/passes.txt
 		echo "${AOSHLP}, ${SAT} (${MAXELEV}), ${FREQ}" >> ${OUTPATH}/passes.txt
 	fi
 }
@@ -309,6 +315,7 @@ update_sat_data () {
 			SAT=`echo ${g} | jq .name | tr -d '"'`
 			NICK=`echo ${g} | jq .nick | tr -d '"'`
 			FREQ=`echo ${g} | jq .freq | tr -d '"'`
+			MINELEV=`echo ${g} | jq .minel | tr -d '"'`
 
 			cat ${CONFPATH}/data_good.txt | grep "${SAT}" -A2 >> ${CONFPATH}/data.txt
 			sed -i s/"${SAT}"/"${NICK}"/ ${CONFPATH}/data.txt
