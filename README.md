@@ -46,7 +46,7 @@ This project is inspired and heavily based on the work of [Luick Klippel](https:
 
 ## Installation steps
 
-![warning](images/warning.png) **Warning:** all the installation steps mentioned here need root privileges, typically just making a `sudo -i` in the console to gain root is enough, or you can type `sudo` before any command.
+![warning](images/warning.png) **Warning:** all the installation steps mentioned here needs root privileges, typically just making a `sudo -s` in the console to gain root is enough, or you can type `sudo` before any command.
 
 ### pre-installation requisites
 
@@ -118,7 +118,7 @@ For some unknown reason the `rtl_fm` tool lacks the `-E wav` option as @takagiwa
 
 - Login in your into SBC and clone this repository `git clone https://github.com/stdevPavelmc/FAASGS`.
 - Change to the created folder `cd FAASGS`.
-- Gain root access via `sudo -i`
+- Gain root access via `sudo -s`
 - Run configuration steps `make cconf`.
 - Configure your local data (see [Configuring](#configuring) below)
 - Run install script `make install`.
