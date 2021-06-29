@@ -12,13 +12,19 @@ export PATH
 path="/usr/local/bin/sats.sh"
 CONFPATH="/etc/sat_data"
 OUTPATH="/var/www/html/sat"
-RTL_PPM=75.5
 USERCONF="${CONFPATH}/user.conf"
 source "${USERCONF}"
 
 # proxy setting are defined in the USERCONF variable
 export http_proxy
 export https_proxy
+
+# force streamed audio processing if on raspberry OS to avoid
+# lack of -E option in rtl_fm
+source /etc/os-release
+if [ "$ID" == "raspbian" ] ; then
+	AUDIO_SBS="no"
+fi
 
 main () {
 	# check for arguments
@@ -174,7 +180,7 @@ rec_sat_data () {
 		else
 			# streamed (piped) capture only on fast/dedicated systems
 			timeout $5 rtl_fm -p "${RTL_PPM}" -f "${FREQ}M" -s "${rxbw}" \
-				g 44.5 -E deemp -F 9 - | \
+				-g 44.5 -E deemp -F 9 - | \
 				sox -t raw -r "${rxbw}" -e signed -b 16 -c 1 - ${WSATP}.wav rate 11025
 		fi
 
